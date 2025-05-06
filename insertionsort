@@ -1,0 +1,8 @@
+#include <iostream.h>
+using namespace std 
+
+int main()
+{
+	int arr[]={13, 2 , 5, 15, 7 ,18, 1};
+	int size=sizeof(arr)
+}

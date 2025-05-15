@@ -10,23 +10,33 @@
 
 import ast
 from collections import OrderedDict
+from sortedcontainers import SortedDict
 
 
 def StockPrice(inp,dic):
 	od=OrderedDict()
+	sod=SortedDict()
 	out=[]
 	for command,lists in zip(inp,dic):
 
 		if command == "update":
+			print(lists[0])
+			if lists[0] in od:
+				price=od[lists[0]]
+				if price in sod:
+					del sod[price]
 			od[lists[0]]=lists[1]
+			sod[lists[1]]=lists[0]
 			out.append("null")
+			print(sod)
 			
 		elif command == "current":
 			last_entry=next(reversed(od))
 			out.append(od[last_entry])
 
 		elif command == "maximum":
-			out.append(max(od.values()))
+			print (sod)
+			out.append(sod.peekitem(-1)[0])
 
 		elif command == "update":
 			for key,value in od:
@@ -34,13 +44,15 @@ def StockPrice(inp,dic):
 					od[key]=lists[1]
 
 		elif command == "minimum":
-			out.append(min(od.values()))
+			out.append(sod.peekitem(0)[0])
 
 		else:
 			out.append("null")
 
 	return out
 
+
+# [[], [1, 10], [2, 10], [], [], [1, 3], [], [4, 2], []]
 
 
 inp=input("enter the commands:")

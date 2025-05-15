@@ -36,7 +36,7 @@ for i in range(len(nodes)):
 		treenodes[i].left = treenodes[2 * i + 1]
 	if (2 * i + 2 < len(nodes)) and treenodes[2 * i + 1].val != "null":
 		treenodes[i].right = treenodes[2 * i + 2]
-
+print(treenodes)
 for x in treenodes:
 	if (x.val == "null"):
 		continue

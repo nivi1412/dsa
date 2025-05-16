@@ -1,4 +1,6 @@
 #binarytree1.py
+#[find depth of binary tree]
+
 from binarytree_lib import build_binarytree,print_binarytree
 
 def get_depth(root):

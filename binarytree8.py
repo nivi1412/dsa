@@ -15,7 +15,7 @@ def balanced_BST(inp):
 	root.left=balanced_BST(inp[:mid])
 	root.right=balanced_BST(inp[mid+1:])
 	return root
-
+	
 def print_bal_BST(root):
 	if root == None:
 		return

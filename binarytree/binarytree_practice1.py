@@ -1,4 +1,4 @@
-#binarytree_practice_1.py
+#binarytree_practice1.py
 #practie_binarytree construction
 
 class binarytree():
@@ -10,7 +10,7 @@ class binarytree():
 def build_binarytree(inp):
 	Arr=[]
 	for i in range(len(inp)):
-		if inp[i]== 'Null':
+		if inp[i]== 'null':
 			Arr.append(None)
 		else:
 			Arr.append(binarytree(inp[i]))
@@ -37,7 +37,7 @@ def print_binarytree(root):
 	print_binarytree(root.left)
 	print_binarytree(root.right)
 
-inp=input("enter the nodes of binary tree seperated by spaces")
-inp=inp.split()
-root=build_binarytree(inp)
-print_binarytree(root)
+# inp=input("enter the nodes of binary tree seperated by spaces")
+# inp=inp.split()
+# root=build_binarytree(inp)
+# print_binarytree(root)

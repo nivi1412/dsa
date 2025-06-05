@@ -1,16 +1,12 @@
 #recoverBST.py
-# def recoverBST(my_list):
-# 	prev=my_list[0]
-# 	count=0
-# 	for i in range(1,len(my_list),+1):
-# 		curr=my_list[i]
-# 		if prev > curr and count==0:
-# 			swap1=prev
-# 			count=1
-# 		elif prev > curr and count==1:
-# 			swap2=curr
-
 from binarytree_practice1 import build_binarytree,print_binarytree
+
+class BST():
+	def __init__(self,data):
+		self.data=data
+		self.left=None
+		self.right=None
+
 
 def recoverBST(my_list,isadjacent):
 	if isadjacent:
@@ -58,6 +54,13 @@ def inordertraversal(root,my_list):
 	if root.right!=None:
 		inordertraversal(root.right,my_list)
 
+def construct_BST(result):
+	nl=len(result):
+	mid=(nl//2)
+	root=BST(mid)
+	root.left=construct_BST([:mid])
+
+
 
 inp=input("enter the nodes of tree seperated by spaces")
 inp=inp.split()
@@ -77,5 +80,4 @@ for i in range(len(inp)):
 	else:
 		result.append(my_list[j])
 		j+=1
-root=build_binarytree(result)
-print_binarytree(root)
+

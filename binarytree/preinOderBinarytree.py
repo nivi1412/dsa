@@ -35,8 +35,8 @@ def construct_tree(preorder,inorder):
 
 
 
-preorder=input("enter the array elements sepe by spaces").split()
-inorder=input("enter the array elements sepe by spaces").split()
+preorder=input("enter the preorder elements sepe by spaces").split()
+inorder=input("enter the inorder elements sepe by spaces").split()
 root=construct_tree(preorder,inorder)
 print_binarytree(root)
 

@@ -25,40 +25,47 @@ def build_binarytree(inp):
 	for i in range(len(Arr)):
 		if Arr[i]==None:
 			continue
-		if (2*i+1)<len(Arr) :
+		if (2*i+1)<len(Arr) and Arr[2*i+1]!=None:
 			Arr[i].left=Arr[2*i+1]
-		if (2*i+2)<len(Arr) :
+		if (2*i+2)<len(Arr) and Arr[2*i+2]!=None:
 			Arr[i].right=Arr[2*i+2]
 	return Arr[0]
 
-def print_binarytree(root):
-	if root == None:
+def print_binarytree(froot):
+	if froot == None:
 		return
-	print("Node:",root.data)
-	if root.left:
-		print("left val",root.left.data)
-	if root.right:
-		print("right val",root.right.data)
-	print_binarytree(root.left)
-	print_binarytree(root.right)
+	print("Node:",froot.data)
+	if froot.left:
+		print("left val",froot.left.data)
+	if froot.right:
+		print("right val",froot.right.data)
+	print_binarytree(froot.left)
+	print_binarytree(froot.right)
 
-#def flattening(root,Arr):
-	# if root!=None:
-	# 	Arr.append(root.data)
-	# if root.left!=None:
-	# 	flattening(root.left,Arr)
-	# if root.right!=None:
-	# 	flattening(root.right,Arr)
-	# Arr2=[]
-	# for i in range(len(Arr)):
+def preorder(root,Arr):
+	if root!=None:
+		Arr.append(int(root.data))
+	if root.left!=None:
+		preorder(root.left,Arr)
+	if root.right!=None:
+		preorder(root.right,Arr)
 
+def flattening(Arr_local):
+	for i in range(0,len(Arr_local)-1,+1):
+		Arr_local[i].right=Arr_local[i+1]
+	return Arr_local[0]
 
 
 inp=input("enter the nodes of tree seperated by spaces").split()
 root=build_binarytree(inp)
-print_binarytree(root)
 Arr=[]
-#froot=flattening(root,Arr)
+preorder(root,Arr)
+print(Arr)
+Arr_local=[]
+for node in Arr:
+	Arr_local.append(BST(node))
+froot=flattening(Arr_local)
+print_binarytree(froot)
 
 
 

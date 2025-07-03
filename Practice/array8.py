@@ -13,3 +13,4 @@ for i in range(len(Arr)):
 	if(i<min_value):
 		min_value=arr[i]
 print(max_value-min_value)
+	

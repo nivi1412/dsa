@@ -30,8 +30,6 @@ def preorder(root,my_list):
 		preorder(root.right,my_list)
 
 
-
-
 Arr=input("enter elements of binarytree")
 Arr=Arr.split()
 val=input("enter the value to be inserted:")

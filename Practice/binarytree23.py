@@ -18,15 +18,17 @@ def constructstring(root,data):
 		left=constructstring(root.left,data)
 		right=constructstring(root.right,data)
 
-		if root.data==data:
-			return root.data+left+right
-		else:
-			return "("+root.data+left+right+")"
+		# if root.data==data:
+		# 	return root.data+left+right
+		# else:
+		return "("+root.data+left+right+")"
 
 Arr=input("enter elements of binarytree")
 Arr=Arr.split()
 root=build_binarytree(Arr)
 string=constructstring(root,root.data)
+print(string)
+string=string[1:len(string)-1]
 print(string)
 result=""
 i=0

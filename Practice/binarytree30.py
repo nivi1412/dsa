@@ -53,12 +53,15 @@ print(Max)
 for i in result:
 	if i[-1]==Max:
 		my_list.append(i)
-for i in range(len(my_list[0])-1):
-	value=my_list[0][i]
-	for j in range(1,len(my_list),+1):
-		if my_list[j][i]!=value:
-			target_node=my_list[0][i-1]
-			break
+if len(my_list)>1:
+	for i in range(len(my_list[0])-1):
+		value=my_list[0][i]
+		for j in range(1,len(my_list),+1):
+			if my_list[j][i]!=value:
+				target_node=my_list[0][i-1]
+				break
+else:
+	target_node=my_list[0][-2]
 print(target_node)
 print_binarytree(findnode(root,target_node))
 

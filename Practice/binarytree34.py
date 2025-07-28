@@ -12,15 +12,11 @@ def degreeofbinarytree(root):
 		connection_count=0
 		local=[]
 		if parent:
-			connection_count+=1
 			local.append(parent.data)
 		if root.left:
-			connection_count+=1
 			local.append(root.left.data)
 		if root.right:
-			connection_count+=1
 			local.append(root.right.data)
-		local.append(connection_count)
 		my_dict[root.data]=local
 
 		count_connections(root.left,root)
@@ -28,12 +24,30 @@ def degreeofbinarytree(root):
 	count_connections(root,parent=None)
 	return my_dict
 
+def DFS(my_dict,visited,start):
+	if not visited[start]:
+		visited[start]=True
+		depths=[]
+		for values in my_dict[start]:
+			depths.append(DFS(my_dict,visited,values))
+			print(start,values,depths)
+		return 1+max(depths)
+	else:
+		return -1
+
+
 Arr=input("enter elements of binarytree")
 Arr=Arr.split()
-start=int(input("enter the start node:"))
+start=input("enter the start node:")
 root=build_binarytree(Arr)
 my_dict=degreeofbinarytree(root)
-minute_count=0
-for key,value in my_dict.items():
-	if key==start:
-		minute_count=minute_count+int(value[-1])
+print(my_dict)
+visited={}
+for key in my_dict:
+	visited[key]=False
+print(DFS(my_dict,visited,start))
+
+
+
+
+

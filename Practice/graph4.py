@@ -17,33 +17,49 @@ trust=input("enter the array trust:")
 trust=ast.literal_eval(trust)
 trust_dict={}
 visited={}
-town_judge={}
+judge=-1
 count=0
+
 
 for i in range(len(trust)):
 	visited[trust[i][0]]=False
 	visited[trust[i][1]]=False
-	town_judge[trust[i][0]]=False
-	town_judge[trust[i][1]]=False
 	
-
 for i in range(len(trust)):
-
+	if visited[trust[i][1]] == False:
+		visited[trust[i][1]] = True
+		trust_dict[trust[i][1]]=[]
+	
 	if visited[trust[i][0]]==False:
-		town_judge[trust[i][1]]=True
 		visited[trust[i][0]]=True
 		trust_dict[trust[i][0]]=[]
 		trust_dict[trust[i][0]].append(trust[i][1])
 	else:
-		# print(i,trust_dict[i][0])
 		trust_dict[trust[i][0]].append(trust[i][1])
-print(visited)
-print(town_judge)
-for key,value in town_judge.items():
-	if value==True:
-		data=key
+		
+
+for key,value in trust_dict.items():
+	if len(value)==0:
 		count+=1
+		judge=key
+
 if count==1:
-	print("town judge is:",data)
+	count=0
+	for key,value in trust_dict.items():
+		if judge in value:
+			count+=1
+	if count==len(trust_dict)-1:
+		print(judge)
+	else:
+		print(-1)
 else:
 	print(-1)
+
+
+
+
+
+
+
+
+

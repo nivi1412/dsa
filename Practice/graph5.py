@@ -30,22 +30,19 @@ edges=ast.literal_eval(edges)
 source=int(input("enter the source node:"))
 destination=int(input("enter the destination node:"))
 
-edges_dict={}
 graph={}
 visited={}
 
 for i in edges:
-	edges_dict[i[0]]=False
-	edges_dict[i[1]]=False
 	visited[i[0]]=False
 	visited[i[1]]=False
 
 for i in edges:
-	if edges_dict[i[0]]==False:
-		edges_dict[i[0]]=True
+	if i[0] not in graph:
 		graph[i[0]]=[]
-		graph[i[0]].append(i[1])
-	else:
-		graph[i[0]].append(i[1])
+	if i[1] not in graph:
+		graph[i[1]]=[]
+	graph[i[0]].append(i[1])
+	graph[i[1]].append(i[0])
 
 print(if_path_exists(graph,visited,source,destination))

@@ -20,19 +20,26 @@ def BFS(Arr,visited,i,j):
 				return False
 
 		if 0<=i+1<row and 0<=j<col and Arr[i+1][j]!='X' and visited[i+1][j]==False:
-			i=i+1
-			visited[i][j]=True
-			q.append([i,j,dist+1])
-		elif 0<=i<row and 0<=j+1<col and Arr[i][j+1]!='X' and visited[i][j+1]==False:
-			j=j+1
-			visited[i][j]=True
-			q.append([i,j,dist+1])
-		else:
-			return False
+			# i=i+1
+			visited[i+1][j]=True
+			q.append([i+1,j,dist+1])
+		if 0<=i<row and 0<=j+1<col and Arr[i][j+1]!='X' and visited[i][j+1]==False:
+			# j=j+1
+			visited[i][j+1]=True
+			q.append([i,j+1,dist+1])
+		if 0<=i-1<row and 0<=j<col and Arr[i-1][j]!='X' and visited[i-1][j]==False:
+			visited[i-1][j]=False
+			q.append([i-1,j,dist-1])
+		if 0<=i<row and 0<=j-1<col and Arr[i][j-1]!='X' and visited[i][j-1]==False:
+			visited[i][j-1]=False
+			q.append([i,j-1,dist-1])
+
+	return False
 
 
 row=int(input("enter no of rows:"))
 col=int(input("enter no of cols:"))
+
 
 Arr=[]
 for i in range(row):

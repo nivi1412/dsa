@@ -66,7 +66,6 @@ for node in graph:
 	if not visited[node]:
 		cycle=cycle or detect_cycle(node,graph,visited,finished)
 if not cycle:
-
 	for node in graph:
 		start_node=node
 		if not BFS_visited[start_node]:

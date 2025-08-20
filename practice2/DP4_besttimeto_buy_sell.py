@@ -5,16 +5,16 @@ my_list=input("enter the price array")
 price_list=ast.literal_eval(my_list)
 
 my_dict={}
-my_dict["max"]=[0,-1]
-my_dict["min"]=[0,10**4]
+my_min=price_list[0]
+max_profit=0
+my_dict[0]=max_profit
 
-for i in range(len(price_list)):
-	if my_dict["min"][1]>price_list[i]:
-		my_dict["min"]=[i,price_list[i]]
-	if my_dict["max"][1]<price_list[i] and my_dict["min"][0]<i:
-		my_dict["max"]=[i,price_list[i]]
+for i in range(1,len(price_list),+1):
+	if my_min > price_list[i]:
+		my_min=price_list[i]
+	diff=price_list[i]-my_min
+	if diff>my_dict[0]:
+		my_dict[0]=diff
+print(my_dict[0])
 
-if my_dict["min"][0]==len(price_list)-1:
-	print(0)
-else:
-	print(my_dict["max"][1]-my_dict["min"][1])
+

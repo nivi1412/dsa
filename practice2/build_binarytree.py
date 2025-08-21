@@ -12,8 +12,11 @@ def build_binarytree(tree):
 	for node in tree:
 		if node=="null":
 			Arr.append(None)
-		Arr.append(nodes(node))
+		else:
+			Arr.append(nodes(node))
 	for i in range(len(Arr)):
+		if Arr[i]==None:
+			continue
 		if 2*i+1 < len(Arr) and Arr[(2*i+1)]!=None:
 			Arr[i].left=Arr[2*i+1]
 		if 2*i+2 < len(Arr) and Arr[(2*i+2)]!=None:
@@ -30,11 +33,3 @@ def print_binarytree(root):
 		print("right",root.right.data)
 	print_binarytree(root.left)
 	print_binarytree(root.right)
-
-
-# tree=input("enter the nodes of the tree: ")
-# tree=ast.literal_eval(tree)
-
-# root=build_binarytree(tree)
-# print(root.data)
-# print_binarytree(root)

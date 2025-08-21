@@ -2,23 +2,21 @@
 
 sequence = input("enter the seq string: ")
 word = input("enter the word string: ")
-count=0
-answer=0
-i=0
-if len(word)>0 and len(sequence)>0:
-	while(i<len(sequence)):
-		print(sequence[i:i+len(word)],word)
-		if sequence[i:i+len(word)]==word:
-			count+=1
-			i+=1
-		else:
-			count=0
-			i+=1
-		answer=max(count,answer)
 
-	print(answer)
-else:
-	print("enter length >0")
+dp=[0]*len(sequence)
+
+for i in range(len(sequence)):
+	if i < len(word)-1:
+		dp[i]=0
+	else:
+		j=i-(len(word)-1)
+		if sequence[j:j+len(word)]==word:
+			print(sequence[j:j+len(word)],word)
+			dp[i]=1+dp[i-(len(word))]
+		else:
+			dp[i]=0
+print(dp)
+print(max(dp))
 
 
 

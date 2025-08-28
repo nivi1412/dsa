@@ -13,6 +13,7 @@ for i in range(len(nums)-1):
 	max_index=max(0,index)
 	if max_index>=len(nums)-1:
 		last_index_reached=True
+
 		break
 print(last_index_reached)
 

@@ -1,0 +1,39 @@
+#DP_uniqueBSTII.py
+def uniqueBSTII(n,my_list,dp):
+	print("my_list:",my_list)
+	if n in dp:
+		return dp[n]
+	elif n==0:
+		dp[n]=[["null"]]
+	elif n==1:
+		dp[n]=[[my_list[0]]]
+	else:
+		finallist=[]
+		for i in range(len(my_list)):
+			# print("left,right",my_list[:i],"  ",my_list[i+1:])
+			left=uniqueBSTII(len(my_list[:i]),my_list[:i],dp)
+			right=uniqueBSTII(len(my_list[i+1:]),my_list[i+1:],dp)
+			root=my_list[i]
+			print(root,":",left,right)
+			for k in left:
+				for j in right:
+					local=[]
+					local.append(root)
+					for ele1 in k:
+						local.append(ele1)
+					for ele2 in j:
+						local.append(ele2)
+					finallist.append(local)
+			dp[n]=finallist
+	return dp[n]
+
+
+
+
+n=int(input("enter no of nodes: "))
+dp={}
+my_list=[]
+for i in range(n):
+	my_list.append(i+1)
+
+uniqueBSTII(n,my_list,dp)

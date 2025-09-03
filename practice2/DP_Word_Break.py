@@ -11,5 +11,8 @@ dp[0]=True
 
 for i in range(1,len(s)+1):
 	for j in range(i+1):
-		if s[j:i+1] in worddict:
-			dp[i]=dp[i] or True
+		if s[j:i] in worddict and dp[j]:
+			print(s[j:i], dp[j],j)
+			dp[i]= True
+print("dp:",dp)
+print(dp[-1])

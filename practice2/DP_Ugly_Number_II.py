@@ -1,11 +1,12 @@
 # DP_Ugly_Number_II.py
+#it increasing exponential
 
 def is_ugly(i,memo):
-	if i in memo:
-		return memo[i]
 	num=i
-
 	for x in [2,3,5]:
+		if i in memo and memo[i]==True:
+			i=1
+			break
 		while i%x==0:
 			i=i//x
 
@@ -19,6 +20,7 @@ memo={}
 
 while(i>0 and n!=1):
 	i+=1
+	print(i)
 	if is_ugly(i,memo):
 		count+=1
 	if count==n:

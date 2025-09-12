@@ -1,5 +1,5 @@
 # DP1_interleaving_string.py
-#why for base case we are comparing one string with the s3 but in main case yeah its obvious
+#why for base case we are comparing one string with the s3 but in main case 
 
 s1=input("enter s1: ")
 s2=input("enter s2: ")
@@ -16,8 +16,8 @@ for j in range(1,len(s2)):
 
 for i in range(1,len(s1)):
 	for j in range(1,len(s2)):
-		a=True if s1[:i+1]+s2[:j+1]==s3[i+j+1] and dp[i-1][j] else False
-		b=True if s1[:i+1]+s2[:j+1]==s3[i+j+1] and dp[i][j-1] else True
+		a=True if s1[i-1]==s3[i+j-1] and dp[i-1][j] else False
+		b=True if s2[j-1]==s3[i+j-1] and dp[i][j-1] else False
 		dp[i][j]=a or b
 
 print(dp)

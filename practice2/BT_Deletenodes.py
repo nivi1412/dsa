@@ -6,17 +6,17 @@ import ast
 def findpaths(root,to_delete,my_list)->list: #return list of roots
 	if root==None:
 		return None
-	if int(root.data) not in to_delete:
-		my_list.append(root)
-	else: 
-		if root.left!=None:
+	root.left=findpaths(root.left,to_delete,my_list)
+	root.right=findpaths(root.right,to_delete,my_list)
+	print("data:",root.data,my_list)
+	if int(root.data) in to_delete:
+		if root.left:
 			my_list.append(root.left)
-		if root.right!=None:
+		if root.right:
 			my_list.append(root.right)
-		root=None
-	if root!=None:
-		findpaths(root.left,to_delete,my_list)
-		findpaths(root.right,to_delete,my_list)
+		return None
+	return root
+
 
 arr=input("enter the nodes seperated by spaces: ")
 arr=list(arr.split())
@@ -26,9 +26,9 @@ to_delete=set(to_delete)
 my_list=[]
 
 root=build_binarytree(arr)
-findpaths(root,to_delete,my_list)
+root=findpaths(root,to_delete,my_list)
+if root:
+	my_list.append(root)
+
 for i in my_list:
 	print_binarytree(i)
-	print("------")
-
-

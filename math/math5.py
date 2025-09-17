@@ -1,5 +1,5 @@
 #math5.py
-#print trailing zeros 
+#print trailing zeros for factoral of a number
 
 num=int(input("enter positive number"))
 

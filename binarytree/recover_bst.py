@@ -44,8 +44,6 @@ def isadjacentfun(my_list):
 	else: isadjacent=False
 	return isadjacent
 
-
-
 def inordertraversal(root,my_list):
 	if root.left!=None:
 		inordertraversal(root.left,my_list)

@@ -1,8 +1,7 @@
 # Use ThreadPoolExecutor with max workers of 3
-# python3 organize.py  1.27s user 0.41s system 11% cpu 15.227 
-# total organize_threading.py  0.00s user 0.00s system 79% cpu 0.003 total
-# organize_threading.py  0.00s user 0.00s system 76% cpu 0.004 total- threadcount=4
-# organize_threading.py  0.00s user 0.00s system 71% cpu 0.003 total
+# python3 organize.py  1.27s user 0.41s system 11% cpu 15.227 total
+# organize_threading.py  1.49s user 0.36s system 24% cpu 7.459 total - threadcount=3
+# organize_threading.py  1.69s user 0.57s system 51% cpu 4.400 total - threadcount=10
 
 
 from pathlib import Path

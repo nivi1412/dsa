@@ -8,6 +8,9 @@ string="/Users/lingalarahul/Documents/Nivi/"
 folder = Path(string)
 files = [str(p) for p in folder.rglob("*.py") if p.is_file()]
 
+count = 0
+LIMIT = 10
+
 for path in files:
     old_path=path
     split_path=path.split("/")
@@ -25,8 +28,7 @@ for path in files:
     raw_json = completion.choices[0].message.content
     new_name = json.loads(raw_json)['new_name']
     new_path = str(Path(path).with_name(new_name))
-    print(old_name,"->",new_name)
-    print(string+old_name)
     os.rename(old_path, new_path)
-
-
+    count+=1
+    if count == LIMIT:
+        break

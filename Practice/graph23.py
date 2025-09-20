@@ -34,6 +34,8 @@ while(count<len(inp)):
 	count+=1
 
 print(graph)
+print(color)
+
 is_bipartite = True
 for node in graph:
 	if node in color:

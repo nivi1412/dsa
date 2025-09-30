@@ -3,30 +3,41 @@
 import ast
 import heapq
 
-row=int(input("enter no of rows:"))
-roadmap=[]
+inp=input("enter the places and corresponding distqances: ")
+src=input("enter the source:")
+roadmap=ast.literal_eval(inp)
+
 heap=[]
 visited_loc= {}
 graph={}
-for i in range(row):
-	inp=input("enter the distances and locations: ")
-	roadmap.append(ast.literal_eval(inp))
+final_out={}
+final_out[src]={}
 
-for roads in roadmap:
-	if roads[0] not in graph:
-		graph[roads[0]]=[]
-	graph[roads[0]].append((roads[1],roads[2]))
+
+
+for road in roadmap:
+	if road[0] not in graph:
+		graph[road[0]]=[]
+		visited_loc[road[0]]=False
+	if road[1] not in graph:
+		graph[road[1]]=[]
+		visited_loc[road[1]]=False
+	graph[road[0]].append([road[1],road[2]])
+
 print(graph)
-
-heapq.heappush(heap,[0,next(iter(graph))])
+heapq.heappush(heap,(0,next(iter(graph))))
+visited_loc[next(iter(graph))]=True
 
 while heap:
-	dist,loc=heapq.heappop(heap)
-	if loc in visited_loc:
-		continue
-	visited_loc[loc]=dist
-	for next_loc in graph.get(loc,{}):
-		if next_loc not in visited_loc:
-			heapq.heappush(heap,[dist+int(next_loc[1]),next_loc[0]])
+	cur_dist,cur_src=heapq.heappop(heap)
+	final_out[src][cur_src]=cur_dist
+	for next_src in graph[cur_src]:
+		if visited_loc[next_src[0]]==False:
+			visited_loc[next_src[0]]=True
+			heapq.heappush(heap,(next_src[1]+cur_dist,next_src[0]))
 
-print(visited_loc)
+print(final_out)
+
+
+
+

@@ -37,7 +37,7 @@ heapq.heappush(heap,(0,src,k+1))
 
 while heap:
 	dist,next_src,stopcount=heapq.heappop(heap)
-	print(dist,next_src,stopcount)
+	# print(dist,next_src,stopcount)
 	if stopcount==0:
 		if next_src==dst:
 			print(dist)
@@ -46,7 +46,7 @@ while heap:
 	else:
 		stopcount-=1
 		for next_dst,next_dist in graph[next_src].items():
-			print("----",next_dst,next_dist)
+			# print("----",next_dst,next_dist)
 			heapq.heappush(heap,(dist+next_dist,next_dst,stopcount))
 
 if not is_dst_reached:

@@ -3,7 +3,7 @@
 
 import ast
 
-def findallpaths(node,graph):
+def findallpaths(node,graph,visited):
 	my_list=[]
 	local_list=[]
 	finished_nodes=set()
@@ -13,19 +13,21 @@ def findallpaths(node,graph):
 
 		local_list.append(node)
 		finished_nodes.add(node)
+		visited[node]=True
 		next_node=graph.get(node,[])
 		# print("nextnode:",next_node)
 		# print("local_list:",local_list)
 		if not next_node:
-			my_list.append(local_list)
+			my_list.append(local_list.copy())
 			# print("my_list",my_list)
 		else:
 			for v in next_node:
-				print("v:",v)
+				# print("v:",v)
 				if v in finished_nodes:
 					continue
 				else:
 					DFS(v)
+		# print("===========")
 		local_list.pop()
 	DFS(node)
 	return my_list
@@ -33,16 +35,19 @@ def findallpaths(node,graph):
 inp=input("enter the inp values: ")
 inp=ast.literal_eval(inp)
 graph={}
+visited={}
 
 for i in range(len(inp)):
 	if i not in graph:
 		graph[i]=[]
-		# visited[i]=False
+		visited[i]=False
 	graph[i]=inp[i]
 print(graph)
 
 for node in graph:
-	print(findallpaths(node,graph))
+	if visited[node]==False:
+		visited[node]=True
+		print("paths:",findallpaths(node,graph,visited))
 
 
 
